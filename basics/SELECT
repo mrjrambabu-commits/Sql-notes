@@ -1,0 +1,294 @@
+# SQL SELECT Statement
+
+The **`SELECT` statement** is one of the most important SQL commands. It is used to **retrieve or display data from one or more tables in a database**.
+
+In simple words:
+
+> **`SELECT` tells the database what data you want to see.**
+
+---
+
+## 1. Basic Syntax
+
+```sql
+SELECT column_name
+FROM table_name;
+```
+
+### Example
+
+Suppose we have an `employees` table:
+
+| employee_id | name  | department | salary |
+| ----------: | ----- | ---------- | -----: |
+|         101 | Ravi  | IT         |  50000 |
+|         102 | Priya | HR         |  45000 |
+|         103 | Arun  | IT         |  60000 |
+|         104 | Anita | Finance    |  55000 |
+
+To display employee names:
+
+```sql
+SELECT name
+FROM employees;
+```
+
+### Output
+
+| name  |
+| ----- |
+| Ravi  |
+| Priya |
+| Arun  |
+| Anita |
+
+---
+
+## 2. Selecting Multiple Columns
+
+You can retrieve multiple columns by separating them with commas.
+
+```sql
+SELECT name, department, salary
+FROM employees;
+```
+
+### Output
+
+| name  | department | salary |
+| ----- | ---------- | -----: |
+| Ravi  | IT         |  50000 |
+| Priya | HR         |  45000 |
+| Arun  | IT         |  60000 |
+| Anita | Finance    |  55000 |
+
+---
+
+## 3. Selecting All Columns
+
+The `*` symbol means **all columns**.
+
+```sql
+SELECT *
+FROM employees;
+```
+
+### Output
+
+| employee_id | name  | department | salary |
+| ----------: | ----- | ---------- | -----: |
+|         101 | Ravi  | IT         |  50000 |
+|         102 | Priya | HR         |  45000 |
+|         103 | Arun  | IT         |  60000 |
+|         104 | Anita | Finance    |  55000 |
+
+---
+
+## 4. How `SELECT` Works
+
+Consider this query:
+
+```sql
+SELECT name, salary
+FROM employees;
+```
+
+It has two important parts:
+
+```text
+SELECT name, salary
+       ↓
+What data do I want?
+
+FROM employees
+     ↓
+Where is the data?
+```
+
+So the query means:
+
+> **Retrieve the name and salary columns from the employees table.**
+
+---
+
+## 5. SELECT with an Alias
+
+An **alias** gives a temporary name to a column in the result.
+
+```sql
+SELECT
+    name AS employee_name,
+    salary AS monthly_salary
+FROM employees;
+```
+
+### Output
+
+| employee_name | monthly_salary |
+| ------------- | -------------: |
+| Ravi          |          50000 |
+| Priya         |          45000 |
+| Arun          |          60000 |
+| Anita         |          55000 |
+
+`AS` is used to create the alias.
+
+---
+
+## 6. SELECT with a Calculation
+
+You can also perform calculations inside a `SELECT` statement.
+
+```sql
+SELECT
+    name,
+    salary,
+    salary * 12 AS annual_salary
+FROM employees;
+```
+
+### Output
+
+| name  | salary | annual_salary |
+| ----- | -----: | ------------: |
+| Ravi  |  50000 |        600000 |
+| Priya |  45000 |        540000 |
+| Arun  |  60000 |        720000 |
+| Anita |  55000 |        660000 |
+
+Here:
+
+```sql
+salary * 12 AS annual_salary
+```
+
+calculates the annual salary and displays it with the name `annual_salary`.
+
+---
+
+## 7. SELECT DISTINCT
+
+`DISTINCT` is used to return **unique values**.
+
+For example:
+
+```sql
+SELECT department
+FROM employees;
+```
+
+Output:
+
+```text
+IT
+HR
+IT
+Finance
+```
+
+There are duplicate `IT` values.
+
+Using `DISTINCT`:
+
+```sql
+SELECT DISTINCT department
+FROM employees;
+```
+
+Output:
+
+```text
+IT
+HR
+Finance
+```
+
+---
+
+# SELECT Statement — Key Points
+
+| Syntax                    | Purpose                       |
+| ------------------------- | ----------------------------- |
+| `SELECT column`           | Retrieve a specific column    |
+| `SELECT column1, column2` | Retrieve multiple columns     |
+| `SELECT *`                | Retrieve all columns          |
+| `SELECT DISTINCT column`  | Retrieve unique values        |
+| `SELECT column AS alias`  | Rename a column in the output |
+| `SELECT column1 * 12`     | Perform calculations          |
+
+---
+
+## Real-World Example
+
+Imagine a `vehicle_data` table:
+
+| vehicle_id | vehicle_type | speed | city      |
+| ---------: | ------------ | ----: | --------- |
+|          1 | Car          |    45 | Hyderabad |
+|          2 | Bike         |    30 | Hyderabad |
+|          3 | Car          |    60 | Bangalore |
+
+To retrieve vehicle type and speed:
+
+```sql
+SELECT vehicle_type, speed
+FROM vehicle_data;
+```
+
+To retrieve all vehicle information:
+
+```sql
+SELECT *
+FROM vehicle_data;
+```
+
+To retrieve only unique vehicle types:
+
+```sql
+SELECT DISTINCT vehicle_type
+FROM vehicle_data;
+```
+
+---
+
+## Important Note
+
+`SELECT` **only retrieves data**. It does not normally change the data stored in the table.
+
+For example:
+
+```sql
+SELECT name
+FROM employees;
+```
+
+only reads and displays the data.
+
+Commands such as `INSERT`, `UPDATE`, and `DELETE` are used for modifying data.
+
+---
+
+### Quick Summary
+
+```text
+SELECT
+   ↓
+Specifies the columns/data you want
+   ↓
+FROM
+   ↓
+Specifies the table
+```
+
+**Basic example:**
+
+```sql
+SELECT name, salary
+FROM employees;
+```
+
+**Meaning:**
+
+> "Show me the name and salary of every employee in the employees table."
+
+This is the **foundation of SQL**. Once you understand `SELECT`, the next important concepts are `WHERE`, `ORDER BY`, `GROUP BY`, `HAVING`, and `JOIN`.
