@@ -1,0 +1,59 @@
+1. What is SQL?
+
+SQL (Structured Query Language) is used to communicate with a database.
+
+For example, imagine a vehicles table:
+
+| id | vehicle_type | speed | city    |
+| -: | ------------ | ----: | ------- |
+|  1 | Car          |    45 | Phoenix |
+|  2 | Bike         |    30 | Austin  |
+|  3 | Car          |    60 | Phoenix |
+|  4 | Pedestrian   |     5 | Austin  |
+
+
+"Show me all cars."
+SELECT *
+FROM vehicles
+WHERE vehicle_type = 'Car';
+
+Result
+| id | vehicle_type | speed | city    |
+| -: | ------------ | ----: | ------- |
+|  1 | Car          |    45 | Phoenix |
+|  3 | Car          |    60 | Phoenix |
+
+
+2. SQL Basics Roadmap
+
+Learn in this order:
+
+Level 1 — Fundamentals
+Database & tables
+SELECT
+WHERE
+ORDER BY
+DISTINCT
+LIMIT
+AND, OR, NOT
+Comparison operators
+Level 2 — Data Analysis
+COUNT()
+SUM()
+AVG()
+MIN()
+MAX()
+GROUP BY
+HAVING
+Level 3 — Important SQL
+CASE WHEN
+JOIN
+Subqueries
+CTEs
+Window functions
+Level 4 — Job Ready
+Data cleaning
+Date/time functions
+Advanced joins
+Query optimization
+Real-world projects
