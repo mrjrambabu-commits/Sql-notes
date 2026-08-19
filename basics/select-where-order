@@ -1,0 +1,46 @@
+-- =============================================
+-- DAY 2 - SELECT, WHERE, ORDER BY
+-- =============================================
+
+USE SQLLearning;
+
+
+-- 1. SELECT all columns
+SELECT *
+FROM Employees;
+
+
+-- 2. SELECT specific columns
+SELECT EmployeeName, Department
+FROM Employees;
+
+
+-- 3. WHERE condition
+SELECT EmployeeName, Department
+FROM Employees
+WHERE Department = 'IT';
+
+
+-- 4. Salary greater than 50000
+SELECT EmployeeName, Salary
+FROM Employees
+WHERE Salary > 50000;
+
+
+-- 5. ORDER BY ascending
+SELECT EmployeeName, Salary
+FROM Employees
+ORDER BY Salary ASC;
+
+
+-- 6. ORDER BY descending
+SELECT EmployeeName, Salary
+FROM Employees
+ORDER BY Salary DESC;
+
+
+-- 7. WHERE + ORDER BY
+SELECT EmployeeName, Department, Salary
+FROM Employees
+WHERE Department = 'IT'
+ORDER BY Salary DESC;
