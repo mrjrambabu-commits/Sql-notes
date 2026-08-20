@@ -1,0 +1,90 @@
+USE SQLLearning;
+GO
+----AND Both condition must be true----
+SELECT
+    EmployeeName,
+    Department,
+    Salary
+FROM dbo.Employees
+WHERE Department = 'IT'
+AND Salary > 50000;
+
+----OR Either condition can be true
+SELECT
+    EmployeeName,
+    Department,
+    Salary  FROM dbo.Employees
+WHERE Department = 'IT' OR Department = 'HR';
+
+-- IN: match any value in the list
+SELECT
+    EmployeeName,
+    Department
+FROM dbo.Employees
+WHERE Department IN ('IT', 'HR');
+
+---BETWEEN: salary range of 45000 to 55000
+
+SELECT 
+    EmployeeName,
+    Salary
+FROM dbo.Employees
+WHERE salary BETWEEN 45000 AND 55000;
+
+---Like:name starts with R
+
+SELECT 
+    EmployeeName
+FROM dbo.Employees
+WHERE EmployeeName LIKE 'R%';
+
+----LIKES ends wiht a ---
+---naes ending with a ---
+SELECT EmployeeName
+FROM dbo.Employees
+WHERE EmployeeName LIKE '%a';
+
+
+----Like Containing 'an;
+
+---naming containg 'an'
+SELECT EmployeeName
+FROM dbo.Employees
+WHERE EmployeeName LIKE '%an%';
+--an can appear anywhere in the name ----
+
+----Combine conditions-----
+----IT or Finance employees ---
+----salary greater than 50000-----
+-----higher salary first ----
+
+
+SELECT 
+    EmployeeName,
+    Department,
+    Salary
+FROM dbo.Employees
+WHERE Department IN ('IT', 'Finance') AND salary >= 50000 ORDER BY salary DESC;
+
+
+-------EXercise employee salary is lessthan 55000.
+SELECT EmployeeName, Salary
+FROM dbo.Employees
+WHERE Salary < 55000;
+
+-----employee with salary between 50000 aand 60000---
+
+SELECT EmployeeName
+FROM dbo.Employees
+WHERE Salary BETWEEN 50000 AND 60000;
+
+
+----employee start with 'p'---
+
+SELECT EmployeeName
+FROM dbo.Employees
+WHERE EmployeeName LIKE 'P%';
+
+SELECT EmployeeName, Department, Salary
+FROM dbo.Employees
+WHERE Department = 'IT' OR Department = 'Finance' AND Salary > 50000;   
